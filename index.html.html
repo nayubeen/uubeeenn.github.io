@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>포트폴리오 — 재무·회계</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1410;
+    --ink-soft: #3d3229;
+    --ink-faint: #7a6e65;
+    --cream: #f7f3ed;
+    --paper: #fdfaf6;
+    --accent: #b8470b;
+    --accent-light: #e8c4aa;
+    --accent-subtle: #f2e8df;
+    --rule: #d4c8bc;
+    --gold: #c49a3c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15px;
+    line-height: 1.8;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 72px 0 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba(255,255,255,0.04) 39px,
+      rgba(255,255,255,0.04) 40px
+    );
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--gold), var(--accent));
+  }
+
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 48px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: end;
+  }
+
+  .header-label {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.1s forwards;
+  }
+
+  .header-name {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(38px, 6vw, 60px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    opacity: 0;
+    animation: fadeUp 0.7s 0.2s forwards;
+  }
+
+  .header-name em {
+    font-style: normal;
+    color: var(--accent-light);
+  }
+
+  .header-tagline {
+    font-size: 14px;
+    color: rgba(247,243,237,0.6);
+    margin-top: 16px;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.35s forwards;
+  }
+
+  .header-meta {
+    text-align: right;
+    font-size: 12px;
+    color: rgba(247,243,237,0.5);
+    line-height: 2;
+    letter-spacing: 0.04em;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.45s forwards;
+  }
+
+  .header-meta strong {
+    color: var(--accent-light);
+    font-weight: 500;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--ink-soft);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .nav-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: flex;
+    gap: 0;
+  }
+
+  nav a {
+    display: block;
+    padding: 14px 20px;
+    color: rgba(247,243,237,0.55);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.2s, background 0.2s;
+    border-bottom: 2px solid transparent;
+    position: relative;
+    top: 1px;
+  }
+
+  nav a:hover {
+    color: var(--cream);
+    background: rgba(255,255,255,0.04);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 48px 100px;
+  }
+
+  /* ── SECTION ── */
+  section {
+    padding: 64px 0 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+
+  section.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 36px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section-num {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  /* ── INTRO CARD ── */
+  .intro-card {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 40px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .intro-card::before {
+    content: '"';
+    font-family: 'Noto Serif KR', serif;
+    font-size: 160px;
+    color: rgba(184,71,11,0.15);
+    position: absolute;
+    top: -20px;
+    left: 24px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .intro-card p {
+    font-size: 15px;
+    line-height: 2;
+    color: rgba(247,243,237,0.85);
+    position: relative;
+    z-index: 1;
+  }
+
+  .intro-card p + p {
+    margin-top: 14px;
+  }
+
+  .intro-card .highlight {
+    color: var(--accent-light);
+    font-weight: 500;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    margin-top: 1px;
+  }
+
+  .info-item {
+    background: var(--cream);
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .info-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .info-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 32px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .exp-item:last-child {
+    border-bottom: none;
+  }
+
+  .exp-left {
+    padding-top: 4px;
+  }
+
+  .exp-period {
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+  }
+
+  .exp-org {
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  .exp-right {}
+
+  .exp-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .exp-role {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-subtle);
+    padding: 3px 10px;
+    margin-bottom: 12px;
+    border-left: 2px solid var(--accent);
+  }
+
+  .exp-desc {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.9;
+  }
+
+  .exp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 14px;
+  }
+
+  .tag {
+    font-size: 11px;
+    color: var(--ink-faint);
+    border: 1px solid var(--rule);
+    padding: 3px 10px;
+    letter-spacing: 0.05em;
+  }
+
+  .achievement {
+    background: var(--accent-subtle);
+    border-left: 3px solid var(--accent);
+    padding: 10px 14px;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  /* ── CERTS ── */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .cert-item {
+    background: var(--paper);
+    padding: 18px 22px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: background 0.2s;
+  }
+
+  .cert-item:hover {
+    background: var(--cream);
+  }
+
+  .cert-num {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 20px;
+    color: var(--accent-light);
+    line-height: 1;
+    min-width: 24px;
+    padding-top: 2px;
+  }
+
+  .cert-info {}
+
+  .cert-name {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  .cert-name.highlight-cert {
+    color: var(--accent);
+  }
+
+  .cert-detail {
+    font-size: 11px;
+    color: var(--ink-faint);
+    margin-top: 3px;
+    letter-spacing: 0.03em;
+  }
+
+  .cert-badge {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: white;
+    padding: 2px 6px;
+    margin-left: 6px;
+    vertical-align: middle;
+    font-weight: 700;
+  }
+
+  /* ── COVER LETTER ── */
+  .coverletter-section {
+    border: 1px solid var(--rule);
+  }
+
+  .cl-item {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .cl-item:last-child {
+    border-bottom: none;
+  }
+
+  .cl-question {
+    padding: 20px 28px;
+    background: var(--ink);
+    color: var(--cream);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+  }
+
+  .cl-question:hover {
+    background: var(--ink-soft);
+  }
+
+  .cl-arrow {
+    font-size: 18px;
+    transition: transform 0.3s;
+    color: var(--accent-light);
+  }
+
+  .cl-answer {
+    padding: 0 28px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+    background: var(--paper);
+  }
+
+  .cl-answer.open {
+    max-height: 1000px;
+    padding: 28px 28px;
+  }
+
+  .cl-answer p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 2;
+  }
+
+  .cl-answer p + p {
+    margin-top: 14px;
+  }
+
+  .cl-item.active .cl-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* ── SKILL BARS ── */
+  .skills-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 40px;
+    margin-top: 8px;
+  }
+
+  .skill-bar-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .skill-bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.03em;
+  }
+
+  .skill-bar-track {
+    height: 3px;
+    background: var(--rule);
+  }
+
+  .skill-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* ── AI CERT ── */
+  .ai-cert-box {
+    background: var(--accent-subtle);
+    border: 1px solid var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 20px 24px;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .ai-cert-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+
+  .ai-cert-text {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  .ai-cert-text strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(247,243,237,0.4);
+    text-align: center;
+    padding: 36px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .header-inner { grid-template-columns: 1fr; padding: 0 24px; }
+    .header-meta { text-align: left; }
+    main { padding: 0 24px 80px; }
+    .nav-inner { padding: 0 16px; overflow-x: auto; }
+    .exp-item { grid-template-columns: 1fr; gap: 8px; }
+    .cert-grid { grid-template-columns: 1fr; }
+    .skills-row { grid-template-columns: 1fr; }
+    .info-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="header-label">Portfolio · Finance &amp; Accounting</div>
+      <div class="header-name">나유빈<em>.</em></div>
+      <div class="header-tagline">데이터 기반의 정확한 업무 수행 · 협성대학교 세무회계학과</div>
+    </div>
+    <div class="header-meta">
+      <strong>학점</strong> 4.23 / 4.5<br>
+      <strong>전공</strong> 세무회계학과<br>
+      <strong>MBTI</strong> INTJ<br>
+      <strong>상태</strong> 휴학 중
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#intro">소개</a>
+    <a href="#experience">경력·활동</a>
+    <a href="#certs">자격증</a>
+    <a href="#skills">역량</a>
+    <a href="#coverletter">자기소개서</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- 01 INTRO -->
+  <section id="intro">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">자기소개</span>
+    </div>
+    <div class="intro-card">
+      <p>체계적인 검증과 팀원과의 협업을 통해 예정 일정보다 1주일 빠르게 연말정산을 마무리한 경험이 있습니다.</p>
+
+      <p>얼마 전까지 <span class="highlight">우리투자증권 HR혁신부</span>에서 연말정산 업무를 수행했습니다. 전표를 검증하고, 오류 유형을 분류한 <span class="highlight">오류 검증 시트</span>를 직접 제작하며, 재무·회계 분야에 역량을 키워나갔습니다.</p>
+      <p>한마디로 <span class="highlight">데이터를 기반으로 정확하게 업무를 수행하는 사람</span>입니다. 이 곳에서 재무·회계 담당자로서, 정확한 데이터와 체계적인 검증을 통해 기업의 재무 신뢰도를 높이는 재무·회계 담당자가 되겠습니다. 감사합니다</p>
+    </div>
+    <div class="info-grid">
+      <div class="info-item">
+        <span class="info-label">학교 / 전공</span>
+        <span class="info-value">협성대학교 세무회계학과</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">학점</span>
+        <span class="info-value">4.23 / 4.5</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">주요 역량</span>
+        <span class="info-value">전표 검증 · 데이터 관리</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 EXPERIENCE -->
+  <section id="experience">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">경력 및 활동 경험</span>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-period">2026.01 — 2026.02</div>
+        <div class="exp-org">우리투자증권</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-title">연말정산 업무 · HR혁신부</div>
+        <div class="exp-role">주임(조장)</div>
+        <p class="exp-desc">㈜티에이엠홀딩스 연계로 우리투자증권 HR혁신부에 파견되어 사내 연말정산 업무 전반을 담당했습니다. 매일 업무 보고서를 작성하고, 전표 오류 검증 및 데이터 입력·관리에 집중했습니다. 근로자 입력 오류(주민번호, 소득기준, 사업자번호 등)를 유형별로 분류한 엑셀 오류 검증 시트를 직접 제작하여 팀 전체의 오류 처리 기준을 표준화했습니다.</p>
+        <div class="achievement">→ 예정 기간 대비 1주일 단축(약 20% 기간 절감), 전표 오류 최소화 달성</div>
+        <div class="exp-tags">
+          <span class="tag">전표 검증</span>
+          <span class="tag">오류 검증 시트 제작</span>
+          <span class="tag">데이터 입력·관리</span>
+          <span class="tag">업무 보고서 작성</span>
+          <span class="tag">팀 협업</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-period">2025.09 — 2025.12</div>
+        <div class="exp-org">협성대학교</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-title">Do Dream 역량개발 스터디</div>
+        <div class="exp-role">조장</div>
+        <p class="exp-desc">재경관리사 취득을 목표로 스터디를 직접 조직하고 조장으로 활동했습니다. 주간 학습 계획을 수립하고 팀원 멘토링을 진행하며 리더십과 자기주도 학습 역량을 키웠습니다.</p>
+        <div class="achievement">→ 2025학년도 2학기 최우수상 수상 · 재경관리사 취득</div>
+        <div class="exp-tags">
+          <span class="tag">스터디 운영</span>
+          <span class="tag">리더십</span>
+          <span class="tag">멘토링</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-period">2023.03 — 2026.02</div>
+        <div class="exp-org">굿네이버스 연계 봉사 동아리</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-title">쉐어링</div>
+        <div class="exp-role">부회장 · 총무 · TFT · 홍보</div>
+        <p class="exp-desc">굿네이버스 경기남부사업지부와 연계된 봉사 동아리에서 3년간 활동했습니다. 부회장 1년, 총무 2년을 역임하며 조직 운영 전반에 참여했고, 홍보분과에서 아동 관련 카드뉴스 약 30건을 제작했습니다. 3년간 동아리 공식 SNS 계정을 운영하며 콘텐츠 기획 및 관리 역량도 길렀습니다.</p>
+        <div class="exp-tags">
+          <span class="tag">콘텐츠 기획</span>
+          <span class="tag">카드뉴스 제작 30건</span>
+          <span class="tag">SNS 계정 운영</span>
+          <span class="tag">조직 운영</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-period">2025.10</div>
+        <div class="exp-org">협성대학교</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-title">학과 맞춤 진로 탐색 프로그램</div>
+        <div class="exp-role">참여자</div>
+        <p class="exp-desc">진로 설계 심화 온라인 특강에 참여하여 전문 직업인 사례를 학습하고, 실무 역량과 경력 계획 수립에 관한 인사이트를 확보했습니다.</p>
+        <div class="exp-tags">
+          <span class="tag">진로 설계</span>
+          <span class="tag">경력 계획</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 CERTS -->
+  <section id="certs">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">자격증 및 면허</span>
+    </div>
+
+    <div class="cert-grid">
+      <div class="cert-item">
+        <div class="cert-num">1</div>
+        <div class="cert-info">
+          <div class="cert-name highlight-cert">재경관리사 <span class="cert-badge">최신</span></div>
+          <div class="cert-detail">삼일회계법인 · 2025.11</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">2</div>
+        <div class="cert-info">
+          <div class="cert-name highlight-cert">TAT(세무정보처리) 2급 <span class="cert-badge">최신</span></div>
+          <div class="cert-detail">한국공인회계사회 · 2025.10</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">3</div>
+        <div class="cert-info">
+          <div class="cert-name highlight-cert">회계관리 1급 <span class="cert-badge">최신</span></div>
+          <div class="cert-detail">삼일회계법인 · 2025.05</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">4</div>
+        <div class="cert-info">
+          <div class="cert-name highlight-cert">전산세무 2급 <span class="cert-badge">최신</span></div>
+          <div class="cert-detail">한국세무사회 · 2024.08</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">5</div>
+        <div class="cert-info">
+          <div class="cert-name highlight-cert">ERP회계정보관리사 1급</div>
+          <div class="cert-detail">한국생산성본부(KPC) · 2024.06</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">6</div>
+        <div class="cert-info">
+          <div class="cert-name">FAT(회계정보처리) 1급</div>
+          <div class="cert-detail">한국공인회계사회 · 2023.11</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">7</div>
+        <div class="cert-info">
+          <div class="cert-name">컴퓨터활용능력 2급</div>
+          <div class="cert-detail">대한상공회의소 · 2022.02</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">8</div>
+        <div class="cert-info">
+          <div class="cert-name">전산회계운용사 2급</div>
+          <div class="cert-detail">대한상공회의소 · 2022.02</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">9</div>
+        <div class="cert-info">
+          <div class="cert-name">ERP물류정보관리사 2급</div>
+          <div class="cert-detail">한국생산성본부(KPC) · 2022.02</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">10</div>
+        <div class="cert-info">
+          <div class="cert-name">ERP생산정보관리사 2급</div>
+          <div class="cert-detail">한국생산성본부(KPC) · 2022.02</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">11</div>
+        <div class="cert-info">
+          <div class="cert-name">전산회계 1급</div>
+          <div class="cert-detail">한국세무사회 · 2021.08</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">12</div>
+        <div class="cert-info">
+          <div class="cert-name">전산회계운용사 1급</div>
+          <div class="cert-detail">대한상공회의소 · 2021.03</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">13</div>
+        <div class="cert-info">
+          <div class="cert-name">ERP인사정보관리사 2급</div>
+          <div class="cert-detail">한국생산성본부(KPC) · 2021.12</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">14</div>
+        <div class="cert-info">
+          <div class="cert-name">ERP회계정보관리사 2급</div>
+          <div class="cert-detail">한국생산성본부(KPC) · 2021.10</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">15</div>
+        <div class="cert-info">
+          <div class="cert-name">ITQ 한글파워포인트 A급</div>
+          <div class="cert-detail">한국생산성본부(KPC) · 2020.12</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">16</div>
+        <div class="cert-info">
+          <div class="cert-name">ITQ 한글엑셀 A급</div>
+          <div class="cert-detail">한국생산성본부(KPC) · 2020.09</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">17</div>
+        <div class="cert-info">
+          <div class="cert-name">전산회계 2급</div>
+          <div class="cert-detail">한국세무사회 · 2020.09</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-num">18</div>
+        <div class="cert-info">
+          <div class="cert-name">ITQ 아래한글 A급</div>
+          <div class="cert-detail">한국생산성본부(KPC) · 2020.06</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI 교육 이수 -->
+    <div style="margin-top: 32px;">
+    <div class="ai-cert-box">
+      <div class="ai-cert-icon">🤖</div>
+      <div class="ai-cert-text">
+        <strong>Anthropic Education AI 교육 이수</strong><br>
+      <div class="section-header" style="margin-bottom: 20px;">
+        <span class="section-num">03-AI</span>
+        <span class="section-title" style="font-size:17px;">AI 교육 이수 (Anthropic Education)</span>
+      </div>
+      <div style="font-size:12px; color:var(--ink-faint); margin-bottom:16px; letter-spacing:0.03em;">재무·회계 직무 관련성 기준으로 선별한 이수 과정</div>
+      <div class="cert-grid">
+        <div class="cert-item">
+          <div class="cert-num" style="font-size:15px;">✦</div>
+          <div class="cert-info">
+            <div class="cert-name highlight-cert">AI Fluency Framework &amp; Foundations</div>
+            <div class="cert-detail">Anthropic Education · AI 기초 이론 및 업무 활용 프레임워크</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-num" style="font-size:15px;">✦</div>
+          <div class="cert-info">
+            <div class="cert-name highlight-cert">AI Fluency for Students</div>
+            <div class="cert-detail">Anthropic Education · AI 도구 활용 역량 기초</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-num" style="font-size:15px;">✦</div>
+          <div class="cert-info">
+            <div class="cert-name highlight-cert">AI Fluency for Educators</div>
+            <div class="cert-detail">Anthropic Education · AI 리터러시 및 업무 적용</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-num" style="font-size:15px;">✦</div>
+          <div class="cert-info">
+            <div class="cert-name">Claude 101</div>
+            <div class="cert-detail">Anthropic Education · Claude AI 도구 기초 활용</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-num" style="font-size:15px;">✦</div>
+          <div class="cert-info">
+            <div class="cert-name">Claude Code in Action</div>
+            <div class="cert-detail">Anthropic Education · AI 기반 업무 자동화 실습</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-num" style="font-size:15px;">✦</div>
+          <div class="cert-info">
+            <div class="cert-name">Building with the Claude API</div>
+            <div class="cert-detail">Anthropic Education · 데이터 처리·자동화 활용 이해</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 SKILLS -->
+  <section id="skills">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title">핵심 역량</span>
+    </div>
+    <div class="skills-row" id="skillsRow">
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>전표 검증 / 오류 관리</span><span>★★★★★</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>Excel / 데이터 정리</span><span>★★★★★</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="97%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>세무·회계 이론 실무</span><span>★★★★★</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>ERP 시스템 활용</span><span>★★★★☆</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>보고서 작성 / 문서화</span><span>★★★★★</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92%"></div></div>
+      </div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>팀 협업 / 커뮤니케이션</span><span>★★★★★</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 COVER LETTER -->
+  <section id="coverletter">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <span class="section-title">자기소개서</span>
+    </div>
+    <div class="coverletter-section">
+
+      <div class="cl-item">
+        <div class="cl-question" onclick="toggle(this)">
+          지원 동기 및 비전
+          <span class="cl-arrow">▾</span>
+        </div>
+        <div class="cl-answer">
+          <p>세무회계학을 전공하며 회계와 행정에 필요한 이론적 지식을 쌓아왔지만, 실제 조직에서 일어나는 업무 흐름이나 실무 방식은 책으로만 익히기에는 한계가 있다고 느꼈습니다. 그래서 직접 몸으로 부딪히며 배우는 경험이 필요하다고 생각했습니다.</p>
+          <p>우리투자증권에서 연말정산 업무를 수행하며 전표 오류 검증, 데이터 입력과 관리, 보고서 작성 등 다양한 사무 업무를 경험했습니다. 이 과정에서 실수가 없도록 꼼꼼하게 일하는 태도와 체계적인 업무 처리가 얼마나 중요한지 깨달았고, 재무·회계 직무에 대한 관심이 더욱 커졌습니다.</p>
+          <p>재무·회계 담당자로서, 정확한 데이터와 체계적인 검증을 통해 기업의 재무 신뢰도를 높이는 역할을 하겠습니다.</p>
+        </div>
+      </div>
+
+      <div class="cl-item">
+        <div class="cl-question" onclick="toggle(this)">
+          지원자의 강점 및 역량 사례
+          <span class="cl-arrow">▾</span>
+        </div>
+        <div class="cl-answer">
+          <p>저의 가장 큰 강점은 <strong>데이터 기반의 체계적인 오류 관리 역량</strong>입니다.</p>
+          <p>우리투자증권 연말정산 업무에서, 근로자가 입력한 내용에 오류가 있어도 본인확정이 가능한 시스템 구조 탓에 주민번호, 소득 기준, 사업자번호 등의 오류가 반복적으로 발생하는 문제를 파악했습니다. 이를 해결하기 위해 오류 유형을 기준으로 분류하고, 오류 내용·처리 결과·처리 일자를 함께 정리한 검증 시트를 엑셀로 직접 제작했습니다.</p>
+          <p>그 결과 팀원들이 동일한 기준으로 빠르게 오류를 처리할 수 있게 되었고, 반복적인 질문이 줄어들면서 업무 효율과 정확도를 함께 높일 수 있었습니다. 18개의 회계·세무·ERP 관련 자격증은 이러한 실무 역량을 뒷받침하는 기반입니다.</p>
+        </div>
+      </div>
+
+      <div class="cl-item">
+        <div class="cl-question" onclick="toggle(this)">
+          문제 해결 경험
+          <span class="cl-arrow">▾</span>
+        </div>
+        <div class="cl-answer">
+          <p><strong>[상황]</strong> 우리투자증권 연말정산 업무에서 단기간에 많은 전표와 자료가 동시에 처리되면서 업무가 집중되는 상황이 발생했습니다. 여러 건의 전표 검증과 데이터 입력을 동시에 진행해야 해 업무 처리에 어려움이 있었습니다.</p>
+          <p><strong>[행동]</strong> 업무의 우선순위를 정리해 처리 계획을 세우고, 전표 검증과 데이터 입력 업무를 나누어 진행하며 오류 검증 시트를 만들어 체계적으로 관리했습니다. 팀원들과 지속적으로 소통하며 오류 가능성이 있는 전표를 함께 확인하고, 매일 업무 진행 상황과 피드백 사항을 보고서로 정리해 공유했습니다.</p>
+          <p><strong>[결과]</strong> 전표 오류를 최소화하며 모든 업무를 정확하게 처리할 수 있었습니다. 예정된 일정보다 1주일 빠르게 연말정산 업무를 마무리하여 약 20%의 기간 단축에 기여했습니다.</p>
+          <p><strong>[배움]</strong> 연말정산 업무는 단순한 서류 검토를 넘어 체계적인 업무 계획과 팀원들과의 협업이 업무 효율성과 성과로 이어진다는 점을 배웠습니다.</p>
+        </div>
+      </div>
+
+      <div class="cl-item">
+        <div class="cl-question" onclick="toggle(this)">
+          입사 후 포부
+          <span class="cl-arrow">▾</span>
+        </div>
+        <div class="cl-answer">
+          <p>입사 후에는 그동안 쌓아온 회계·세무 지식과 실무 경험을 바탕으로, 정확한 데이터 관리와 체계적인 검증을 통해 재무 신뢰도를 높이는 데 기여하겠습니다.</p>
+          <p>조직의 업무 절차와 시스템을 빠르게 익히고, 선배들의 업무 방식도 적극적으로 배워 현장에서 바로 쓸 수 있는 실무 능력을 갖추겠습니다. 또한 팀원들과 원활히 소통하고 협업하며 조직에 꾸준히 도움이 되는 사람이 되겠습니다.</p>
+          <p>꼼꼼함과 책임감을 바탕으로 맡은 업무에서 실수가 없도록 최선을 다하고, 장기적으로는 재무·회계 분야의 전문가로 성장하겠습니다.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  재무·회계 포트폴리오 &nbsp;·&nbsp; 협성대학교 세무회계학과
+</footer>
+
+<script>
+  // Accordion
+  function toggle(el) {
+    const item = el.parentElement;
+    const answer = item.querySelector('.cl-answer');
+    const isOpen = item.classList.contains('active');
+    // close all
+    document.querySelectorAll('.cl-item').forEach(i => {
+      i.classList.remove('active');
+      i.querySelector('.cl-answer').classList.remove('open');
+    });
+    if (!isOpen) {
+      item.classList.add('active');
+      answer.classList.add('open');
+    }
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        // skill bars
+        e.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+          bar.style.width = bar.dataset.width;
+        });
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('section').forEach(s => observer.observe(s));
+
+  // Smooth scroll
+  document.querySelectorAll('nav a').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
